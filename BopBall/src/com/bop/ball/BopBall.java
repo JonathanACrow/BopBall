@@ -1,10 +1,21 @@
 package com.bop.ball;
 
+import org.newdawn.slick.AppGameContainer;
+
 public class BopBall
 {
     public static void main(String[] args)
     {
-        Network.init();
-        Network.getProxy().sayHello();
+        try
+        {
+            AppGameContainer con = new AppGameContainer(new BopBallGame());
+            con.setDisplayMode(500, 500, false);
+            con.setTargetFrameRate(60);
+            con.start();
+        }
+        catch(Exception error)
+        {
+            error.printStackTrace();
+        }
     }
 }
