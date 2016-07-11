@@ -21,6 +21,12 @@ public class Button extends GUIActionComponent
         textX = getBounds().getCenterX() - getFont().getWidth(getText())/2;
         textY = getBounds().getCenterY() - getFont().getHeight(getText())/2;
     }
+    @Override
+    public void setPosition(float x, float y)
+    {
+        super.setPosition(x,y);
+        updateBounds();
+    }
     
     @Override
     public void setText(String txt)
@@ -45,9 +51,10 @@ public class Button extends GUIActionComponent
     public void render(GameContainer con, StateBasedGame game, Graphics g) throws SlickException 
     {
         g.setColor(getBackground());
+        g.fillRect(getX(), getY(), getWidth(), getHeight());
+        g.setColor(getForeground());
         g.setLineWidth(2f);
         g.draw(getBounds());
-        g.setColor(getForeground());
         g.setFont(getFont());
         g.drawString(getText(),textX, textY);
     }
