@@ -1,14 +1,29 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package com.bop.ball.client.gui;
 
-/**
- *
- * @author student
- */
-public class GUIActionComponent {
+import java.util.ArrayList;
+
+
+public abstract class GUIActionComponent  extends GUIComponent
+{
+    private ArrayList<GUIAction> actions;
+    public GUIActionComponent()
+    {
+        actions = new ArrayList<>();
+    }
+    
+    public void addAcion(GUIAction a)
+    {
+        actions.add(a);
+    }
+    public void removeAction(GUIAction a)
+    {
+        actions.remove(a);
+    }
+    public void callActions()
+    {
+        for( GUIAction a : actions)
+            a.act(this);
+    }
     
 }
