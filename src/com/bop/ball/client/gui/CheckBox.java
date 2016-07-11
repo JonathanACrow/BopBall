@@ -2,6 +2,7 @@ package com.bop.ball.client.gui;
 
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.geom.Rectangle;
 import org.newdawn.slick.state.StateBasedGame;
@@ -9,6 +10,7 @@ import org.newdawn.slick.state.StateBasedGame;
 public class CheckBox extends GUIComponent
 {
     private boolean check;
+    private float textY = 0;
     
     public CheckBox(String txt, boolean check)
     {
@@ -19,6 +21,7 @@ public class CheckBox extends GUIComponent
     {
         float h = getFont().getHeight(getText())+10;
         setBounds(new Rectangle(getX(), getY(), getFont().getWidth(getText())+10+h, h));
+        textY = getY()+(getHeight()+5)/2-getFont().getHeight(getText())/2;
     }
     @Override
     public void setText(String txt)
@@ -33,7 +36,9 @@ public class CheckBox extends GUIComponent
     }
     @Override
     public void onKeyPress(int key)
-    {}
+    {
+        if(key == Input.KEY_ENTER) onClick(0, 0);
+    }
     @Override
     public void render(GameContainer con, StateBasedGame game, Graphics g) throws SlickException
     {

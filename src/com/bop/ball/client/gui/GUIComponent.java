@@ -16,6 +16,7 @@ public abstract class GUIComponent
     private Rectangle bounds;
     private String txt;
     private Color bg, fg;
+    private boolean focus;
     
     public GUIComponent()
     {
@@ -48,6 +49,10 @@ public abstract class GUIComponent
     {
         return bounds;
     }
+    public void setPosition(float x, float y)
+    {
+        bounds.setLocation(x, y);
+    }
     public float getX()
     {
         return bounds.getX();
@@ -79,6 +84,14 @@ public abstract class GUIComponent
     public Color getForeground()
     {
         return fg;
+    }
+    void setHasFocus(boolean focus)
+    {
+        this.focus = focus;
+    }
+    public boolean hasFocus()
+    {
+        return focus;
     }
     public abstract void onClick(float mouseX, float mouseY);
     public abstract void onKeyPress(int key);
