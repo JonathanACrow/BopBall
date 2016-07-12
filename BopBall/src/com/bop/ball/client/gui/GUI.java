@@ -38,17 +38,17 @@ public class GUI
     {
         return comps.toArray(new GUIComponent[0]);
     }
-    void onClick(float mouseX, float mouseY)
+    void onClick(int x, int y, int btn)
     {
         Rectangle bounds;
         for(int i = comps.size()-1; i >= 0; i--)
         {
             bounds = comps.get(i).getBounds();
-            if(bounds.contains(mouseX, mouseY)) 
+            if(bounds.contains(x, y)) 
             {
                 if(focus != null) focus.setHasFocus(false);
                 focus = comps.get(i);
-                focus.onClick(mouseX-bounds.getX(), mouseY-bounds.getY());
+                focus.onClick((int)(x-bounds.getX()+0.5f), (int)(y-bounds.getY()+0.5f), btn);
                 focus.setHasFocus(true);
             }
         }

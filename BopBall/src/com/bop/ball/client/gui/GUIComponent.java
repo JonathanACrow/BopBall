@@ -93,7 +93,7 @@ public abstract class GUIComponent
     {
         return focus;
     }
-    public abstract void onClick(float mouseX, float mouseY);
+    public abstract void onClick(int x, int y, int btn);
     public abstract void onKeyPress(int key);
     public abstract void render(GameContainer con, StateBasedGame game, Graphics g) throws SlickException;
     public abstract void update(GameContainer con, StateBasedGame game, int delta) throws SlickException;

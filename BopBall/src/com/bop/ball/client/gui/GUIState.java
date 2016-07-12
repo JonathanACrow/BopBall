@@ -30,9 +30,9 @@ public abstract class GUIState extends BasicGameState
         gui.update(con, game, delta);
     }
     @Override
-    public void mousePressed(int button, int x, int y)
+    public void mousePressed(int btn, int x, int y)
     {
-        gui.onClick(x, y);
+        gui.onClick(x, y, btn);
     }
     @Override
     public void keyPressed(int key, char c)

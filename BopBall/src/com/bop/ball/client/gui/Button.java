@@ -30,15 +30,15 @@ public class Button extends GUIActionComponent
     }
     
     @Override
-    public void onClick(float mouseX, float mouseY) 
+    public void onClick(int x, int y, int btn) 
     {
-        callActions();
+        if(btn == Input.MOUSE_LEFT_BUTTON) callActions();
     }
 
     @Override
     public void onKeyPress(int key) 
     {
-        if(key == Input.KEY_ENTER) onClick(0,0);
+        if(key == Input.KEY_ENTER) onClick(0,0,Input.MOUSE_LEFT_BUTTON);
     }
 
     @Override

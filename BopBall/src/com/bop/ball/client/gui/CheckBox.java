@@ -30,14 +30,14 @@ public class CheckBox extends GUIComponent
         updateBounds();
     }
     @Override
-    public void onClick(float mouseX, float mouseY)
+    public void onClick(int x, int y, int btn)
     {
-        check = !check;
+        if(btn == Input.MOUSE_LEFT_BUTTON) check = !check;
     }
     @Override
     public void onKeyPress(int key)
     {
-        if(key == Input.KEY_ENTER) onClick(0, 0);
+        if(key == Input.KEY_ENTER) onClick(0,0,Input.MOUSE_LEFT_BUTTON);
     }
     @Override
     public void render(GameContainer con, StateBasedGame game, Graphics g) throws SlickException
