@@ -21,7 +21,12 @@ public class Button extends GUIActionComponent
         textX = getBounds().getCenterX() - getFont().getWidth(getText())/2;
         textY = getBounds().getCenterY() - getFont().getHeight(getText())/2;
     }
-    
+    @Override
+    public void setPosition(float x, float y)
+    {
+        super.setPosition(x, y);
+        updateBounds();
+    }
     @Override
     public void setText(String txt)
     {
@@ -36,7 +41,7 @@ public class Button extends GUIActionComponent
     }
 
     @Override
-    public void onKeyPress(int key) 
+    public void onKeyPress(int key, char c) 
     {
         if(key == Input.KEY_ENTER) onClick(0,0,Input.MOUSE_LEFT_BUTTON);
     }

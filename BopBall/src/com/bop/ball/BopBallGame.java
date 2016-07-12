@@ -6,7 +6,7 @@ import org.newdawn.slick.state.StateBasedGame;
 
 public class BopBallGame extends StateBasedGame
 {
-    public static final int MENU_STATE = 1;
+    public static final int MENU_STATE = 1, LOGIN_STATE = 2;
     
     public BopBallGame()
     {
@@ -16,5 +16,6 @@ public class BopBallGame extends StateBasedGame
     public void initStatesList(GameContainer con) throws SlickException
     {
         addState(new MenuState());
+        addState(new LoginState());
     }
 }

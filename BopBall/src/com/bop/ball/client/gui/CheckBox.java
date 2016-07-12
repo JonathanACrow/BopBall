@@ -7,6 +7,9 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.geom.Rectangle;
 import org.newdawn.slick.state.StateBasedGame;
 
+/**
+ * @author Jonathan Crow
+ */
 public class CheckBox extends GUIComponent
 {
     private boolean check;
@@ -35,7 +38,7 @@ public class CheckBox extends GUIComponent
         if(btn == Input.MOUSE_LEFT_BUTTON) check = !check;
     }
     @Override
-    public void onKeyPress(int key)
+    public void onKeyPress(int key, char c)
     {
         if(key == Input.KEY_ENTER) onClick(0,0,Input.MOUSE_LEFT_BUTTON);
     }
