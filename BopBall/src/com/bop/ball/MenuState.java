@@ -24,6 +24,7 @@ public class MenuState extends GUIState
     public void init(GameContainer con, StateBasedGame game) throws SlickException
     {
         super.init(con, game);
+        con.getInput().enableKeyRepeat();
         login = (LoginState)game.getState(BopBallGame.LOGIN_STATE);
         GUI gui = getGUI();
         gui.addComponent(logBtn = new Button("Login"));

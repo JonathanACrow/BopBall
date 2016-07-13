@@ -16,7 +16,7 @@ public class TextBox extends GUIActionComponent
     private Color hl;
     private int charLim;
     private boolean pass;
-    private String hide;
+    private String cont, hide, draw;
     
     /**
      * @param x left of bounds
@@ -31,6 +31,7 @@ public class TextBox extends GUIActionComponent
         this.charLim = charLim;
         hl = Color.lightGray;
         pass = false;
+        cont = "";
         hide = "";
     }
     /**
@@ -75,17 +76,26 @@ public class TextBox extends GUIActionComponent
     {
         this.pass = pass;
     }
-    @Override
-    public void setText(String txt)
+    /**
+     * @param cont The text within the textbox
+     */
+    public void setContent(String cont)
     {
-        super.setText(txt);
+        this.cont = cont;
         if(pass)
         {
-            char[] hideArr = new char[txt.length()];
+            char[] hideArr = new char[cont.length()];
             for(int i = 0; i < hideArr.length; i++)
                 hideArr[i] = '*';
             hide = new String(hideArr);
         }
+    }
+    /**
+     * @return cont The text within the textbox
+     */
+    public String getContent()
+    {
+        return cont;
     }
     @Override
     public void onClick(int x, int y, int btn)
@@ -93,8 +103,8 @@ public class TextBox extends GUIActionComponent
     @Override
     public void onKeyPress(int key, char c)
     {
-        if(c >= 32 && c < 127 && getText().length() < getCharacterLimit()) setText(getText()+c);
-        else if(key == Input.KEY_BACK && getText().length() > 0) setText(getText().substring(0, getText().length()-1));
+        if(c >= 32 && c < 127 && getContent().length() < getCharacterLimit()) setContent(getContent()+c);
+        else if(key == Input.KEY_BACK && getContent().length() > 0) setContent(getContent().substring(0, getContent().length()-1));
     }
     @Override
     public void render(GameContainer con, StateBasedGame game, Graphics g) throws SlickException
@@ -105,9 +115,11 @@ public class TextBox extends GUIActionComponent
         g.setFont(getFont());
         g.setLineWidth(2f);
         g.draw(getBounds());
-        g.drawString(pass ? hide : getText(), getBounds().getCenterX()-getFont().getWidth(getText())/2.0f, getBounds().getCenterY()-getFont().getHeight(getText())/2.0f);
+        g.drawString(draw, getBounds().getCenterX()-getFont().getWidth(draw)/2.0f, getBounds().getCenterY()-getFont().getHeight(draw)/2.0f);
     }
     @Override
     public void update(GameContainer con, StateBasedGame game, int delta) throws SlickException
-    {}
+    {
+        draw = getContent().isEmpty() ? getText() : (pass ? hide : getContent());
+    }
 }

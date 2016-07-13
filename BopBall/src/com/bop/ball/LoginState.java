@@ -45,9 +45,12 @@ public class LoginState extends GUIState
         GUI gui = getGUI();
         float centX = con.getWidth()/2.0f, yInt = con.getHeight()/5.0f;
         gui.addComponent(user = new TextBox(centX-100,yInt,200,50,20));
+        user.setText("Username");
         gui.addComponent(pass = new TextBox(centX-125,yInt*2,250,50,25));
+        pass.setText("Password");
         pass.setPassword(true);
         gui.addComponent(passConf = new TextBox(centX-125,yInt*3,250,50,25));
+        passConf.setText("Confirm Password");
         passConf.setPassword(true);
         gui.addComponent(regBtn = new Button("Register"));
         regBtn.addAcion(act);

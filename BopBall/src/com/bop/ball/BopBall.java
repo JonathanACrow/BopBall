@@ -4,6 +4,7 @@ public class BopBall
 {
     public static void main(String[] args)
     {
+        args = new String[]{"endPoint=server"};
         args = new String[]{"endPoint=client"};
         RuntimeArgs.setArgs(args);
         Network.init();
