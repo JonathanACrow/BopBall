@@ -13,7 +13,6 @@ import org.newdawn.slick.state.StateBasedGame;
  */
 public class TextBox extends GUIActionComponent
 {
-    private Color hl;
     private int charLim;
     private boolean pass;
     private String cont, hide, draw;
@@ -29,24 +28,9 @@ public class TextBox extends GUIActionComponent
     {
         setBounds(new Rectangle(x, y, w, h));
         this.charLim = charLim;
-        hl = Color.lightGray;
         pass = false;
         cont = "";
         hide = "";
-    }
-    /**
-     * @return The color of this component when focused
-     */
-    public Color getHighlight()
-    {
-        return hl;
-    }
-    /**
-     * @param hl The color of this component when focused
-     */
-    public void setHighlight(Color hl)
-    {
-        this.hl = hl;
     }
     /**
      * @return maximum length of the textbox's String
@@ -109,7 +93,7 @@ public class TextBox extends GUIActionComponent
     @Override
     public void render(GameContainer con, StateBasedGame game, Graphics g) throws SlickException
     {
-        g.setColor(hasFocus() ? hl : getBackground());
+        g.setColor(hasFocus() ? getHighlight() : getBackground());
         g.fill(getBounds());
         g.setColor(getForeground());
         g.setFont(getFont());

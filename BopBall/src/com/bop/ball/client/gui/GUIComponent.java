@@ -18,7 +18,7 @@ public abstract class GUIComponent
     private Font font;
     private Rectangle bounds;
     private String txt;
-    private Color bg, fg;
+    private Color bg, fg, hl;
     private boolean focus, hide;
     
     public GUIComponent()
@@ -27,6 +27,7 @@ public abstract class GUIComponent
         font = DEFAULT_FONT;
         bg = Color.white;
         fg = Color.black;
+        hl = Color.lightGray;
         txt = "";
     }
     /**
@@ -135,6 +136,20 @@ public abstract class GUIComponent
     public Color getForeground()
     {
         return fg;
+    }
+    /**
+     * @return The color of this component when focused
+     */
+    public Color getHighlight()
+    {
+        return hl;
+    }
+    /**
+     * @param hl The color of this component when focused
+     */
+    public void setHighlight(Color hl)
+    {
+        this.hl = hl;
     }
     /**
      * @param focus true if this is the focused component of the containing gui
